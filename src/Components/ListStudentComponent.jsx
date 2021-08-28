@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import StudentService from '../services/StudentService';
  
 class App extends Component {
   constructor(props) {
@@ -9,6 +10,11 @@ class App extends Component {
     };
   }
  
+  componentDidMount(){
+      StudentService.getStudents().then((res) =>{
+          this.setState({ students: res.data});
+      })
+  }
   render() {
     return (
       <div>
