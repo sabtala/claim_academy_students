@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import StudentService from '../services/StudentService';
 
 export default class CreateStudentComponent extends Component {
     constructor(props) {
@@ -23,6 +24,9 @@ export default class CreateStudentComponent extends Component {
           e.preventDefault();
           let student = {firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, address: this.state.address, phoneNumber: this.state.phoneNumber};
           console.log('student =>' + JSON.stringify(student));
+          StudentService.createStudent(student).then(res =>{
+            this.props.history.push('/students');
+          });
       }
       changeFirstNameHandler = (event) => {
           this.setState({firstName: event.target.value});
