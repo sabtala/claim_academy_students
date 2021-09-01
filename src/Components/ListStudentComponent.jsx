@@ -9,8 +9,12 @@ class ListStudentComponent extends Component {
       students: [],
     };
     this.addStudent = this.addStudent.bind(this);
+    this.editStudent = this.editStudent.bind(this);
   }
  
+  editStudent(id){
+        this.props.history.push(`/update-student/${id}`);
+  }
   componentDidMount(){
       StudentService.getStudents().then((res) =>{
           this.setState({ students: res.data});
