@@ -52,6 +52,9 @@ class ListStudentComponent extends Component {
                                         <td>{student.email}</td>
                                         <td>{student.address}</td>
                                         <td>{student.phoneNumber}</td>
+                                        <td>
+                                            <button onClick= {() => this.editStudent(student.id)} className = "btn btn-info">Update</button>
+                                        </td>
                                     </tr>
                                 )
                             }
