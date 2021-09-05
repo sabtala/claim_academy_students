@@ -38,7 +38,9 @@ export default class UpdateStudentComponent extends Component {
           e.preventDefault();
           let student = {firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, address: this.state.address, phoneNumber: this.state.phoneNumber};
           console.log('student =>' + JSON.stringify(student));
-          
+          StudentService.updateStudent(student, this.state.id).then(res => {
+            this.props.history.push('/students');
+          });
       }
       changeFirstNameHandler = (event) => {
           this.setState({firstName: event.target.value});
