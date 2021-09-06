@@ -10,6 +10,13 @@ class ListStudentComponent extends Component {
     };
     this.addStudent = this.addStudent.bind(this);
     this.editStudent = this.editStudent.bind(this);
+    this.deleteStudent = this.deleteStudent.bind(this);
+  }
+
+  deleteStudent(id){
+      StudentService.deleteStudent(id).then( res => {
+            this.setState({students: this.state.students.filter(student => student.id !== id)});
+      });
   }
  
   editStudent(id){
@@ -58,7 +65,7 @@ class ListStudentComponent extends Component {
                                         <td>{student.phoneNumber}</td>
                                         <td>
                                             <button onClick= {() => this.editStudent(student.id)} className = "btn btn-info">Update</button>
-                                            <button onClick= {() => this.deleteStudent(student.id)} className = "btn btn-danger">Delete</button>
+                                            <button style = {{marginLeft:"10px"}} onClick= {() => this.deleteStudent(student.id)} className = "btn btn-danger">Delete</button>
 
                                         </td>
                                     </tr>
